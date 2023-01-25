@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  repository:
+    build:
+      context: ./repository/
+      args:
+        ENABLED_MODULES: fancyindex
+    image: nginx-with-fancyindex:v1
+    environment:
+      - NGINX_PORT=80
+    volumes:
+      - ./:/data:ro
+    ports:
+      - "8080:80"
