@@ -2,7 +2,9 @@ server {
     listen       ${NGINX_PORT};
     listen  [::]:${NGINX_PORT};
 
-    add_header Access-Control-Allow-Origin *;
+    add_header Access-Control-Allow-Origin '*';
+    add_header Access-Control-Allow-Headers '*';
+    add_header Access-Control-Allow-Methods '*';
 
     location /theme  {
         alias /theme;
