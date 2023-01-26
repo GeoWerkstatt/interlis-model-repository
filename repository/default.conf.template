@@ -2,6 +2,8 @@ server {
     listen       ${NGINX_PORT};
     listen  [::]:${NGINX_PORT};
 
+    add_header Access-Control-Allow-Origin *;
+
     location /theme  {
         alias /theme;
     }
@@ -11,10 +13,11 @@ server {
         fancyindex on;
         fancyindex_localtime on;
         fancyindex_exact_size off;
+        fancyindex_ignore Version.md;
         # Specify the path to the header.html and foother.html files, that are server-wise,
         # ie served from root of the website. Remove the leading '/' otherwise.
-        fancyindex_header "theme/header.html";
-        fancyindex_footer "theme/footer.html";
+        fancyindex_header "/theme/header.html";
+        fancyindex_footer "/theme/footer.html";
     }
 
     #error_page  404              /404.html;
