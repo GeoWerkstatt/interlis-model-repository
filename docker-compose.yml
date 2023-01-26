@@ -5,11 +5,8 @@ services:
       context: ./repository/
       args:
         ENABLED_MODULES: fancyindex
-    image: nginx-with-fancyindex:v1
-    environment:
-      - NGINX_PORT=80
+    image: interlis-model-repository:latest
     volumes:
       - ./dummy-repository-data:/data:ro
-      - ./README.md:/theme/README.md
     ports:
       - "8080:80"

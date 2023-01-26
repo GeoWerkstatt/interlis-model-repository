@@ -72,7 +72,8 @@ RUN set -ex \
        done \
     && rm -rf /tmp/packages
 
-# Configure & load modules
+# Configure modules and themes
 COPY nginx.conf /etc/nginx/nginx.conf
+ENV NGINX_PORT=80
 COPY default.conf.template  /etc/nginx/templates/default.conf.template
 COPY ./theme /theme
