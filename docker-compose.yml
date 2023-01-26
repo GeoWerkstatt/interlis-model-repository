@@ -9,6 +9,7 @@ services:
     environment:
       - NGINX_PORT=80
     volumes:
-      - ./:/data:ro
+      - ./dummy-repository-data:/data:ro
+      - ./README.md:/theme/README.md
     ports:
       - "8080:80"
