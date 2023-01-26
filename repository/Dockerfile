@@ -75,3 +75,4 @@ RUN set -ex \
 # Configure & load modules
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf.template  /etc/nginx/templates/default.conf.template
+COPY ./theme /theme
