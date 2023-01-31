@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TRANSFER xmlns="http://www.interlis.ch/INTERLIS2.3">
+    <HEADERSECTION SENDER="ceis-20091112" VERSION="2.3">
+        <MODELS>
+            <MODEL NAME="IliRepository09" VERSION="2009-11-12" URI="mailto:ce@local" />
+        </MODELS>
+    </HEADERSECTION>
+    <DATASECTION>
+        <IliRepository09.RepositoryIndex BID="b0">
+            <IliRepository09.RepositoryIndex.ModelMetadata TID="1">
+                <Name>Units</Name>
+                <SchemaLanguage>ili2_3</SchemaLanguage>
+                <File>ili23/Units-20120220.ili</File>
+                <Version>2012-02-20</Version>
+                <publishingDate>2012-02-20</publishingDate>
+                <Issuer>http://www.interlis.ch/models</Issuer>
+                <technicalContact>mailto:info@interlis.ch</technicalContact>
+                <furtherInformation>https://www.interlis.ch</furtherInformation>
+                <md5>7307a06785ca51720bc9de8cec3b3db4</md5>
+            </IliRepository09.RepositoryIndex.ModelMetadata>
+        </IliRepository09.RepositoryIndex>
+    </DATASECTION>
+</TRANSFER>
