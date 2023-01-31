@@ -9,7 +9,7 @@ set -e
   HTTPS_PROXY=$PROXY
 
 # Set default values (if not specified in docker-compose)
-export ILI2C_MODEL_DIR="$ILI2C_INPUT_DIR;${ILIVALIDATOR_MODEL_DIR:-http://models.interlis.ch/}"
+export ILI2C_MODEL_DIR="$ILI2C_INPUT_DIR;${ILI2C_VALIDATION_REPOSITORY:-http://models.interlis.ch/}"
 
 # Download and configure ilivalidator and optional ili2pgkg
 download_and_configure_ilitool () {

@@ -14,13 +14,18 @@ repository-root
 ```
 
 ## Validate repository
-Currently the validation process is not dockerized or automated. You can use [ili2c](https://www.interlis.ch/downloads/ili2c) to validate your repository structure.
+The image `interlis-model-repository-validator` is configured to validate a repository located in mounted directory `/input` and copy the contents on successful validation to the `/output` directory. The container will exit after validation. 
 
-Invoke ili2c as follows replacing `root` with your repository's root directory.
+The image does not contain the software [ili2c](https://github.com/claeis/ili2c) but will download it on initial startup. Upon successful validation the script will create a `Version.md` file containing information about the validation time & date.
 
-```
-java -jar ili2c.jar --modeldir "root;http://models.interlis.ch" --check-repo-ilis root
-```
+### Configuration Options
+| ENV-Variable | Description |
+| --- | --- |
+| `ILI2C_INPUT_DIR` | Override where the validator looks for the repository files to be validated. |
+| `ILI2C_OUTPUT_DIR` | Override where the validator copies the files upon successful validation. |
+| `ILITOOLS_HOME_DIR` | Override where the ili2c will be downloaded to. |
+| `PROXY`| Provide a Proxy URL for ili2c. |
+| `ILI2C_VALIDATION_REPOSITORY` | Specify corresponding online repositories to check for dependant Models. Default: `http://models.interlis.ch/` |
 
 ## Host repository
 The docker image `interlis-model-repository` provides a preconfigured nginx instance with themed [ngx-fancyindex](https://github.com/aperezdc/ngx-fancyindex) module activated. The theme is based on [Nareen's theme](https://github.com/Naereen/Nginx-Fancyindex-Theme) and provides some extra's tailored for hosting an INTERLIS Repository.
