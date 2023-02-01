@@ -24,7 +24,7 @@ jobs:
       - name: Set environment variables
         run: |
           echo VERSION=$(cat VERSION).$GITHUB_RUN_NUMBER >> $GITHUB_ENV
-          echo IMAGE_NAME=$REGISTRY/interlis-${{ matrix.context }} >> $GITHUB_ENV
+          echo IMAGE_NAME=$REGISTRY/$(echo ${GITHUB_REPOSITORY,,})-${{ matrix.context }} >> $GITHUB_ENV
           echo COMMITED_AT=$(git show -s --format=%cI `git rev-parse HEAD`) >> $GITHUB_ENV
           echo REVISION=$(git rev-parse --short HEAD) >> $GITHUB_ENV
 
