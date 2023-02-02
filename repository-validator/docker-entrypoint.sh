@@ -12,20 +12,15 @@ set -e
 export ILI2C_MODEL_DIR="$ILI2C_INPUT_DIR;${ILI2C_VALIDATION_REPOSITORY:-http://models.interlis.ch/}"
 
 # Download and configure ili2c
-download_and_configure_ilitool () {
-  ilitool=$1
-  version=$2
-  installDir=$3/$ilitool/$version
-  echo -n "Download and configure $ilitool-$version ..."
-  curl https://downloads.interlis.ch/$ilitool/$ilitool-$version.zip -LO --silent --show-error && \
-    mkdir -p $installDir && unzip -o -q $ilitool-$version.zip -d $installDir && \
-    rm $ilitool-$version.zip && \
-    echo "done!" || exit 1
-}
-
 ILI2C_LATEST_VERSION=$(curl https://www.interlis.ch/downloads/ili2c --silent | grep -Po '(?<=ili2c-)\d+.\d+.\d+' | head -n 1)
 export ILI2C_VERSION=${ILI2C_VERSION:-$ILI2C_LATEST_VERSION}
-download_and_configure_ilitool ili2c $ILI2C_VERSION $ILITOOLS_HOME_DIR
+
+installDir=$ILITOOLS_HOME_DIR/ili2c/$ILI2C_VERSION
+echo -n "Download and configure ili2c-$ILI2C_VERSION ..."
+curl https://downloads.interlis.ch/ili2c/ili2c-$ILI2C_VERSION.zip -LO --silent --show-error && \
+mkdir -p $installDir && unzip -o -q ili2c-$ILI2C_VERSION.zip -d $installDir && \
+rm ili2c-$ILI2C_VERSION.zip && \
+echo "done!" || exit 1
 
 # Use default user:group if no $PUID and/or $PGID is provided.
 groupmod -o -g ${PUID:-941} abc && \
