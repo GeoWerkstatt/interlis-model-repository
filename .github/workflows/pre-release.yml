@@ -38,7 +38,7 @@ jobs:
             org.opencontainers.image.version=v${{ env.VERSION }}
             org.opencontainers.image.maintainer=GeoWerkstatt GmbH <support@geowerkstatt.ch>
           tags: |
-            type=edge
+            type=edge,branch=add-release-workflows
 
       - name: Log in to the GitHub container registry
         uses: docker/login-action@v1
