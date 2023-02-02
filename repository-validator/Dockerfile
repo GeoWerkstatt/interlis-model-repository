@@ -1,6 +1,5 @@
 FROM eclipse-temurin:11-jre-focal
 ENV TZ=Europe/Zurich
-ENV APP_LOG_DIR=/logs
 ENV ILI2C_INPUT_DIR=/input
 ENV ILI2C_OUTPUT_DIR=/output
 ENV ILITOOLS_HOME_DIR=/ilitools

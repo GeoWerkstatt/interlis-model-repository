@@ -11,7 +11,7 @@ set -e
 # Set default values (if not specified in docker-compose)
 export ILI2C_MODEL_DIR="$ILI2C_INPUT_DIR;${ILI2C_VALIDATION_REPOSITORY:-http://models.interlis.ch/}"
 
-# Download and configure ilivalidator and optional ili2pgkg
+# Download and configure ili2c
 download_and_configure_ilitool () {
   ilitool=$1
   version=$2
@@ -50,7 +50,7 @@ echo \
 "--------------------------------------------------------------------------
 ili2c version:                    $ILI2C_VERSION `[[ $ILI2C_VERSION != $ILI2C_LATEST_VERSION ]] && echo "(new version $ILI2C_LATEST_VERSION available!)"`
 ili2c model repositories:         $ILI2C_MODEL_DIR
-ilivalidator trace messages:      $([[ $ILIVALIDATOR_ENABLE_TRACE = true ]] && echo enabled || echo disabled)
+ili2c trace messages:             $([[ $ILI2C_ENABLE_TRACE = true ]] && echo enabled || echo disabled)
 http proxy:                       ${PROXY:-no proxy set}
 http proxy exceptions:            $([[ -n $NO_PROXY ]] && echo $NO_PROXY || echo undefined)
 user uid:                         $(id -u abc)
