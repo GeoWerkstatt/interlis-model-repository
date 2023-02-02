@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  repository:
+    build:
+      context: ./repository/
+      args:
+        ENABLED_MODULES: fancyindex
+    image: interlis-model-repository:latest
+    volumes:
+      - ./dummy-repository-data:/data:ro
+    ports:
+      - "8080:80"
