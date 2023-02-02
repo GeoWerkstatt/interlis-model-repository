@@ -3,8 +3,6 @@ services:
   repository:
     build:
       context: ./repository/
-      args:
-        ENABLED_MODULES: fancyindex
     image: interlis-model-repository:latest
     volumes:
       - validated-repository:/data:ro

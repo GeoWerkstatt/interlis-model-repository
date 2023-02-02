@@ -1,7 +1,7 @@
 #https://github.com/nginxinc/docker-nginx/blob/3581b6708a9ad8f8511db4a2fd57a703b17903c2/modules/Dockerfile.alpine
 FROM nginx:mainline-alpine as builder
 
-ARG ENABLED_MODULES
+ARG ENABLED_MODULES=fancyindex
 
 RUN set -ex \
     && if [ "$ENABLED_MODULES" = "" ]; then \
