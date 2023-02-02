@@ -26,6 +26,9 @@ indent_size = 2
 [*.html]
 indent_size = 2
 
+[*.xml]
+indent_size = 2
+
 [Version.md]
 insert_final_newline = false
 
