@@ -47,7 +47,6 @@ ili2c version:                    $ILI2C_VERSION `[[ $ILI2C_VERSION != $ILI2C_LA
 ili2c model repositories:         $ILI2C_MODEL_DIR
 ili2c trace messages:             $([[ $ILI2C_ENABLE_TRACE = true ]] && echo enabled || echo disabled)
 http proxy:                       ${PROXY:-no proxy set}
-http proxy exceptions:            $([[ -n $NO_PROXY ]] && echo $NO_PROXY || echo undefined)
 user uid:                         $(id -u abc)
 user gid:                         $(id -g abc)
 timezone:                         $TZ

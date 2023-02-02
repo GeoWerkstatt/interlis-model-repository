@@ -18,14 +18,22 @@ The image `interlis-model-repository-validator` is configured to validate a repo
 
 The image does not contain the software [ili2c](https://github.com/claeis/ili2c) but will download it on initial startup. Upon successful validation the script will create a `Version.md` file containing information about the validation time & date.
 
+### Minimal setup with compose:
+```
+version: "3.3"
+services:
+  repository:
+    image: ghcr.io/geowerkstatt/interlis-model-repository-repository-validator
+    volumes:
+      - local-repository-files:/input       
+      - validated-repository:/output
+```
+
 ### Configuration Options
 | ENV-Variable | Description |
 | --- | --- |
-| `ILI2C_INPUT_DIR` | Override where the validator looks for the repository files to be validated. |
-| `ILI2C_OUTPUT_DIR` | Override where the validator copies the files upon successful validation. |
-| `ILITOOLS_HOME_DIR` | Override where the ili2c will be downloaded to. |
-| `PROXY`| Provide a Proxy URL for ili2c. |
-| `ILI2C_VALIDATION_REPOSITORY` | Specify corresponding online repositories to check for dependant Models. Default: `http://models.interlis.ch/` |
+| `PROXY`| Optional, Configuring proxy settings for all apps in the container. Protocol (e.g. http://) and port (e.g. 8080) is mandatory in order do be able to parse values properly.  Possible values are: `http://example.com:8080` , `https://host.example.com:443`, `http://10.10.5.68:5698`, `https://USER:PASSWORD@10.10.5.68:8443` | 
+| `ILI2C_VALIDATION_REPOSITORY` | Specify corresponding online repositories to check for dependant Models. Multiple values must be separated by `;`. Example: `http://models.interlis.ch/;http://models.geo.admin.ch`. For more info see [ili2c documentation](https://github.com/claeis/ili2c/blob/master/doc/ili2c.rst) on option`--modeldir`. Default: `http://models.interlis.ch/` |
 
 ## Host repository
 The docker image `interlis-model-repository` provides a preconfigured nginx instance with themed [ngx-fancyindex](https://github.com/aperezdc/ngx-fancyindex) module activated. The theme is based on [Nareen's theme](https://github.com/Naereen/Nginx-Fancyindex-Theme) and provides some extra's tailored for hosting an INTERLIS Repository.
@@ -36,9 +44,9 @@ Run the provided compose within your [correctly structured Repository](#create-r
 version: "3.3"
 services:
   repository:
-    image: interlis-model-repository:latest
+    image: ghcr.io/geowerkstatt/interlis-model-repository-repository
     volumes:
-      - .:/data:ro
+      - validated-repository:/data:ro
     ports:
       - "80:80"
 ```
