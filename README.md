@@ -14,13 +14,27 @@ repository-root
 ```
 
 ## Validate repository
-Currently the validation process is not dockerized or automated. You can use [ili2c](https://www.interlis.ch/downloads/ili2c) to validate your repository structure.
+The image `interlis-model-repository-validator` is configured to validate a repository located in mounted directory `/input` and copy the contents on successful validation to the `/output` directory. The container will exit after validation. 
 
-Invoke ili2c as follows replacing `root` with your repository's root directory.
+The image does not contain the software [ili2c](https://github.com/claeis/ili2c) but will download it on initial startup. Upon successful validation the script will create a `Version.md` file containing information about the validation time & date.
 
+### Minimal setup with compose:
 ```
-java -jar ili2c.jar --modeldir "root;http://models.interlis.ch" --check-repo-ilis root
+version: "3.3"
+services:
+  repository:
+    image: ghcr.io/geowerkstatt/interlis-model-repository-validator
+    volumes:
+      - local-repository-files:/input       
+      - validated-repository:/output
 ```
+
+### Configuration Options
+| ENV-Variable | Description |
+| --- | --- |
+| `PROXY`| Optional, Configuring proxy settings for all apps in the container. Protocol (e.g. http://) and port (e.g. 8080) is mandatory in order do be able to parse values properly.  Possible values are: `http://example.com:8080` , `https://host.example.com:443`, `http://10.10.5.68:5698`, `https://USER:PASSWORD@10.10.5.68:8443` | 
+| `ILI2C_ENABLE_TRACE` | Set flag `--trace` on ili2c execution. Default: `false` |
+
 
 ## Host repository
 The docker image `interlis-model-repository` provides a preconfigured nginx instance with themed [ngx-fancyindex](https://github.com/aperezdc/ngx-fancyindex) module activated. The theme is based on [Nareen's theme](https://github.com/Naereen/Nginx-Fancyindex-Theme) and provides some extra's tailored for hosting an INTERLIS Repository.
@@ -31,9 +45,9 @@ Run the provided compose within your [correctly structured Repository](#create-r
 version: "3.3"
 services:
   repository:
-    image: interlis-model-repository:latest
+    image: ghcr.io/geowerkstatt/interlis-model-repository
     volumes:
-      - .:/data:ro
+      - validated-repository:/data:ro
     ports:
       - "80:80"
 ```
@@ -56,9 +70,3 @@ Replace the included theme by overriding / mounting the contents of `/theme` wit
 The image functions like regular [nginx docker image](https://hub.docker.com/_/nginx) apart default configuration and included [ngx-fancyindex](https://github.com/aperezdc/ngx-fancyindex). For configuring please refer to official [nginx documentation](http://nginx.org/en/docs/) and our config files [nginx.conf](./repository/nginx.conf) and [default.conf.template](./repository/default.conf.template).
 
 ![Screenshot Repository](./repository/repository-screenshot.png)
-
-
-
-
-
-

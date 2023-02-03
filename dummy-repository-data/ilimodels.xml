@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TRANSFER xmlns="http://www.interlis.ch/INTERLIS2.3">
+  <HEADERSECTION SENDER="ceis-20091112" VERSION="2.3">
+    <MODELS>
+      <MODEL NAME="IliRepository09" VERSION="2009-11-12" URI="mailto:ce@local" />
+    </MODELS>
+  </HEADERSECTION>
+  <DATASECTION>
+    <IliRepository09.RepositoryIndex BID="b0">
+      <IliRepository09.RepositoryIndex.ModelMetadata TID="1">
+        <Name>Units_FOR_TEST</Name>
+        <SchemaLanguage>ili2_3</SchemaLanguage>
+        <File>ili23/Units_FOR_TEST.ili</File>
+        <Version>2012-02-20</Version>
+        <publishingDate>2012-02-20</publishingDate>
+        <dependsOnModel>
+          <IliRepository09.ModelName_>
+              <value>GeometryCHLV95_V1</value>
+          </IliRepository09.ModelName_>
+        </dependsOnModel>
+        <Issuer>http://geow.test</Issuer>
+        <technicalContact>mailto:info@interlis.ch</technicalContact>
+        <furtherInformation>https://www.interlis.ch</furtherInformation>
+        <md5>82240dab105b0b7832ffb9064c1f7411</md5>
+      </IliRepository09.RepositoryIndex.ModelMetadata>
+    </IliRepository09.RepositoryIndex>
+  </DATASECTION>
+</TRANSFER>

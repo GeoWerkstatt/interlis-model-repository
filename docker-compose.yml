@@ -3,10 +3,21 @@ services:
   repository:
     build:
       context: ./repository/
-      args:
-        ENABLED_MODULES: fancyindex
     image: interlis-model-repository:latest
     volumes:
-      - ./dummy-repository-data:/data:ro
+      - validated-repository:/data:ro
     ports:
       - "8080:80"
+
+  validator:
+    build:
+      context: ./repository-validator/
+    image: interlis-model-repository-validator:latest
+    environment:
+      - ILI2C_ENABLE_TRACE=true
+    volumes:
+      - ./dummy-repository-data:/input
+      - validated-repository:/output
+
+volumes:
+  validated-repository: {}
