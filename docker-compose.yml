@@ -13,6 +13,8 @@ services:
     build:
       context: ./repository-validator/
     image: interlis-model-repository-validator:latest
+    environment:
+      - ILI2C_ENABLE_TRACE=true
     volumes:
       - ./dummy-repository-data:/input
       - validated-repository:/output

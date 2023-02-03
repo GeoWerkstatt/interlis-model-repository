@@ -8,9 +8,6 @@ set -e
   HTTP_PROXY=$PROXY \
   HTTPS_PROXY=$PROXY
 
-# Set default values (if not specified in docker-compose)
-export ILI2C_MODEL_DIR="$ILI2C_INPUT_DIR;${ILI2C_VALIDATION_REPOSITORY:-http://models.interlis.ch/}"
-
 # Download and configure ili2c
 ILI2C_LATEST_VERSION=$(curl https://www.interlis.ch/downloads/ili2c --silent | grep -Po '(?<=ili2c-)\d+.\d+.\d+' | head -n 1)
 export ILI2C_VERSION=${ILI2C_VERSION:-$ILI2C_LATEST_VERSION}
