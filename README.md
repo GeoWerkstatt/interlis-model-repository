@@ -23,7 +23,7 @@ The image does not contain the software [ili2c](https://github.com/claeis/ili2c)
 version: "3.3"
 services:
   repository:
-    image: ghcr.io/geowerkstatt/interlis-model-repository-repository-validator
+    image: ghcr.io/geowerkstatt/interlis-model-repository-validator
     volumes:
       - local-repository-files:/input       
       - validated-repository:/output
@@ -45,7 +45,7 @@ Run the provided compose within your [correctly structured Repository](#create-r
 version: "3.3"
 services:
   repository:
-    image: ghcr.io/geowerkstatt/interlis-model-repository-repository
+    image: ghcr.io/geowerkstatt/interlis-model-repository
     volumes:
       - validated-repository:/data:ro
     ports:
@@ -70,9 +70,3 @@ Replace the included theme by overriding / mounting the contents of `/theme` wit
 The image functions like regular [nginx docker image](https://hub.docker.com/_/nginx) apart default configuration and included [ngx-fancyindex](https://github.com/aperezdc/ngx-fancyindex). For configuring please refer to official [nginx documentation](http://nginx.org/en/docs/) and our config files [nginx.conf](./repository/nginx.conf) and [default.conf.template](./repository/default.conf.template).
 
 ![Screenshot Repository](./repository/repository-screenshot.png)
-
-
-
-
-
-
