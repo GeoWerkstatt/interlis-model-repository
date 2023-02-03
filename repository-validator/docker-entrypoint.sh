@@ -30,6 +30,7 @@ echo -n "Set permissions for mounted volumes ..." && \
   chown -R abc:abc $ILI2C_INPUT_DIR && \
   chown -R abc:abc $ILI2C_OUTPUT_DIR && \
   chown -R abc:abc $ILITOOLS_HOME_DIR && \
+  chown -R abc:abc $HOME && \
   echo "done!"
 
 # Export current environment for all users and cron jobs
