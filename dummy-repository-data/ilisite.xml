@@ -11,23 +11,11 @@
   <shortDescription>Test Modell</shortDescription>
   <Owner>https://www.geowerkstatt.ch/</Owner>
   <technicalContact>mailto:office@geowerkstatt.ch</technicalContact>
-  <subsidiarySite>
+  <parentSite>
     <IliSite09.RepositoryLocation_>
-      <value>http://models.geo.admin.ch</value>
+      <value>https://models.interlis.ch</value>
     </IliSite09.RepositoryLocation_>
-    <IliSite09.RepositoryLocation_>
-      <value>https://models.kgk-cgc.ch</value>
-    </IliSite09.RepositoryLocation_>
-    <IliSite09.RepositoryLocation_>
-      <value>https://models.geo.llv.li</value>
-    </IliSite09.RepositoryLocation_>
-    <IliSite09.RepositoryLocation_>
-      <value>https://405.sia.ch/models</value>
-    </IliSite09.RepositoryLocation_>
-    <IliSite09.RepositoryLocation_>
-      <value>https://repositorio.proadmintierra.info</value>
-    </IliSite09.RepositoryLocation_>
-  </subsidiarySite>
+  </parentSite>
   </IliSite09.SiteMetadata.Site>
 </IliSite09.SiteMetadata>
 </DATASECTION>

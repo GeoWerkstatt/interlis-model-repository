@@ -1,11 +1,13 @@
-!! File Units.ili Release 2012-02-20
+!! File Units_FOR_TEST.ili Release 2012-02-20
 
 INTERLIS 2.3;
 
 !! 2012-02-20 definition of "Bar [bar]" corrected
 
-CONTRACTED TYPE MODEL Units (en) AT "http://www.interlis.ch/models"
+CONTRACTED TYPE MODEL Units_FOR_TEST (en) AT "http://geow.test"
   VERSION "2012-02-20" =
+
+  IMPORTS GeometryCHLV95_V1;
 
   UNIT
     !! abstract Units
@@ -92,5 +94,5 @@ CONTRACTED TYPE MODEL Units (en) AT "http://www.interlis.ch/models"
     Euro [EUR] EXTENDS INTERLIS.MONEY;
     SwissFrancs [CHF] EXTENDS INTERLIS.MONEY;
 
-END Units.
+END Units_FOR_TEST.
 
